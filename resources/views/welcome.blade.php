@@ -310,7 +310,7 @@
                                     <div class="clear"></div>
                                 </div>
                                 <p>
-                                    <a href="{{ route('checkout.create', 'gila-belajar') }}" class="btn btn-master btn-secondary w-100 mt-3">
+                                    <a href="{{ route('checkout.create', 'baru-mulai') }}" class="btn btn-master btn-secondary w-100 mt-3">
                                         Start With This Plan
                                     </a>
                                 </p>
