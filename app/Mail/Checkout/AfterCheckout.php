@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail\User;
+namespace App\Mail\Checkout;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -8,18 +8,18 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
+use App\Models\Checkout;
 
-class AfterRegister extends Mailable
+class AfterCheckout extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(protected User $user)
+    public function __construct(protected Checkout $checkout)
     {
-
+        //
     }
 
     /**
@@ -28,7 +28,7 @@ class AfterRegister extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to Bootcamp!',
+            subject: "Register Camp: {$this->checkout->Camp->title}",
         );
     }
 
@@ -38,9 +38,9 @@ class AfterRegister extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.user.afterRegister',
+            markdown: 'emails.checkout.afterCheckout',
             with: [
-                'user' => $this->user
+                'checkout' => $this->checkout
             ],
         );
     }
